@@ -17,4 +17,13 @@
 
 ## 🗂️ فولډر جوړښت
 
-📁 Pashto-Books/ ├── 📁 PDF/ │ ├── کتاب1.pdf │ ├── کتاب2.pdf │ └── کتاب3.pdf └── README.md
+<h2>🗂️ فولډر جوړښت</h2>
+
+<pre>
+📁 Pashto-Books/
+├── 📁 PDF/
+│   ├── کتاب1.pdf
+│   ├── کتاب2.pdf
+│   └── کتاب3.pdf
+└── README.md
+</pre>
