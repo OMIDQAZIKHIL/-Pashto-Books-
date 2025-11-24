@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+  <meta charset="UTF-8">
+  <title>Login - SecureCrop</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/login_page.css' %}">
+</head>
+<body>
+
+  <!-- FULL PAGE LAYOUT -->
+  <div class="page-container">
+    <!-- LEFT SIDE IMAGE SECTION -->
+    <div class="left-section">
+      <div class="overlay"></div>
+      <div class="content">
+        <i class="fa-solid fa-seedling"></i>
+        <h2>Join SecureCrop</h2>
+        <p>ML-based Crop Recommendation System powered by advanced <br>soil analysis and artificial intelligence</p>
+      </div>
+
+      <!-- Stats Box -->
+      <div class="stats-box">
+        <div class="box">
+          <p>500+ <br> Farmers</p>
+        </div>
+        <div class="box">
+          <p>95% <br> Accuracy</p>
+        </div>
+        <div class="box">
+          <p>24/7 <br> Support</p>
+        </div>
+      </div>
+
+      <!-- Moving Icons -->
+      <div class="moving-icons">
+        <i class="fa-solid fa-seedling icon1"></i>
+        <i class="fa-solid fa-cloud-sun icon2"></i>
+        <i class="fa-solid fa-cogs icon3"></i>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE FORM SECTION -->
+    <div class="right-section">
+      <div class="login-form">
+        <h2>Login</h2>
+        <p>Sign up to start using SecureCrop AI</p>
+
+        <!-- LOGIN FORM -->
+        <form>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter your username" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+          </div>
+
+          <div class="form-group">
+            <label for="role">Role</label>
+            <select id="role" required>
+              <option value="farmer">Farmer</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+
+          <button type="submit" class="login-btn">Login</button>
+        </form>
+
+        <div class="create-account">
+          <p>Don't have an account? <a href="#">Create Account</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

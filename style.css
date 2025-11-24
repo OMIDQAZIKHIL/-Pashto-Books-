@@ -1,0 +1,593 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+    overflow-y: auto;   /* Allow vertical scrolling if necessary */
+    height: 100%;
+    margin: 0;
+}
+
+/* TOP BAR */
+.topbar {
+    width: 100%;
+    background: white;
+    padding: 12px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    
+    /* Fix the top bar */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+/* LEFT LOGO SECTION */
+.logo {
+    margin-left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo i {
+    color: #4CAF50;
+    font-size: 22px;
+}
+
+/* RIGHT SECTION */
+.right-section {
+    margin-right: 70px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Notification */
+.notification i {
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect for Notification */
+.notification i:hover {
+    color: #FFEB3B; /* Yellow color on hover */
+}
+
+/* Avatar Circle */
+.avatar {
+    width: 35px;
+    height: 35px;
+    background: #4CAF50;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Logout Circle */
+.logout-btn {
+    width: 35px;
+    height: 35px;
+    background: #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, background-color 0.2s ease;
+}
+
+.logout-btn i {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Hover effect for Logout */
+.logout-btn:hover {
+    background: #FFEB3B;  /* Yellow color on hover */
+}
+
+/* Preventing page content from hiding behind the topbar */
+body {
+    padding-top: 60px; /* Adjust this depending on the height of your top bar */
+}
+
+
+/* Floating welcome text */
+.welcome-header {
+    position: relative;
+    top: 30px;
+    left: 400px;
+    font-family: Arial, sans-serif;
+}
+
+.welcome-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.welcome-header p {
+    font-size: 15px;
+    color: #6b7280;
+    margin-top: 6px;
+}
+
+/* Sidebar */
+.sidebar-card {
+    width: 220px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    font-family: Arial, sans-serif;
+
+    /* FIXED POSITION */
+    position: fixed;
+    top: 80px;   /* adjust as you want */
+    left: 40px;   /* adjust as you want */
+
+    transition: background 0.2s ease;
+}
+
+.sidebar-card:hover {
+    background: #EDF9FE;
+}
+
+
+
+/* Menu Section */
+.menu-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 18px;
+    color: #1a1a1a;
+
+}
+
+.section-label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #9aa4b2;
+    margin: 18px 0 0px;
+    letter-spacing: 0.5px;
+}
+
+.menu-section a {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 8px 4px;
+    font-size: 15px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 6px;
+    transition: 0.15s ease;
+    margin-bottom: 10px;
+}
+
+.menu-section a:hover {
+    background: #f3f6f9;
+}
+
+/* Dashboard Cards */
+.dashboard-cards {
+    margin-left: 380px;
+    margin-top: 1px;
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    position: relative;
+    top: 50px;
+    left: 30px;
+}
+
+/* Top summary cards */
+.summary-cards {
+    display: flex;
+    gap: 70px;
+    margin-bottom: 25px;
+}
+
+/* Each card */
+.card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 22px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  /* ⭐ Moves icon to the right */
+    
+    min-width: 180px;
+}
+
+/* Icon */
+.card-icon {
+    font-size: 32px;
+    margin-right: 0px;
+    color: #3bb273;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 600;
+}
+
+.card-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2f855a;
+}
+
+/* Alerts */
+.alerts {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.alert {
+    background: #f9fafb;
+    border-radius: 10px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: #374151;
+    border: 1.5px solid transparent;
+}
+
+.weather-alert {
+    border-color: #facc15;
+    background: #fef9c3;
+}
+
+.planting-window {
+    border-color: #34d399;
+    background: #d1fae5;
+}
+
+.alert-icon {
+    font-size: 20px;
+}
+
+.alert-content strong {
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 700;
+}
+
+.current-weather {
+    background: #ebf8ff;
+    border: 1px solid #ACA; 
+    border-radius: 14px;
+    padding: 40px 22px;
+    max-width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    position: relative;
+    z-index: 20;   /* ⭐ FIX */
+}
+
+
+.current-weather-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 100px;
+    color: #1a202c;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.weather-details {
+    display: flex;
+    align-items: center;
+    gap: 90px;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.weather-item {
+    text-align: center;
+    min-width: 80px;
+}
+
+.weather-icon {
+    font-size: 26px;
+    margin-bottom: 6px;
+    color: #3182ce;
+}
+
+.weather-value {
+    font-weight: 700;
+    font-size: 20px;
+    color: #2c5282;
+}
+
+.weather-label {
+    font-size: 13px;
+    color: #4a5568;
+}
+
+.forecast-btn {
+    margin-left: auto;
+    background-color: #38a169;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+.forecast-btn:hover {
+    background-color: #2f855a;
+}
+
+
+
+/* just the 6 cards in the center */
+.feature-grid {
+  max-width: 840px;
+  margin: 90px 100px 0 auto;  /* ⬅️ added top space */
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+
+/* base card */
+.feature-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px 20px 18px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 170px;
+}
+
+/* header: icon + text */
+.feature-header {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.feature-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+/* title + subtitle */
+.feature-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.feature-header p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* colored card accents (like screenshot) */
+.soil-card      { border-left: 4px solid #22c55e; }
+.disease-card   { border-left: 4px solid #fb923c; }
+.weather-card   { border-left: 4px solid #3b82f6; }
+.community-card { border-left: 4px solid #a855f7; }
+.market-card    { border-left: 4px solid #facc15; }
+.last-card      { border-left: 4px solid #22c55e; }
+
+.soil-card .feature-icon {
+  background: #ecfdf3;
+  color: #16a34a;
+}
+
+.disease-card .feature-icon {
+  background: #fff7ed;
+  color: #f97316;
+}
+
+.weather-card .feature-icon {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+
+.community-card .feature-icon {
+  background: #faf5ff;
+  color: #a855f7;
+}
+
+.market-card .feature-icon {
+  background: #fefce8;
+  color: #eab308;
+}
+
+.last-card .feature-icon {
+  background: #ecfdf3;
+  color: #16a34a;
+}
+
+/* buttons */
+.primary-btn,
+.ghost-btn {
+  margin-top: auto;
+  align-self: flex-start;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #16a34a;
+  color: #ffffff;
+  border-color: #16a34a;
+}
+
+.primary-btn:hover {
+  background: #15803d;
+  border-color: #15803d;
+}
+
+.ghost-btn {
+  background: #ffffff;
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+.ghost-btn:hover {
+  background: #f3f4f6;
+}
+
+.full-width {
+  width: 100%;
+  text-align: center;
+}
+
+/* weather climate row + bar */
+.climate-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.climate-label {
+  color: #6b7280;
+}
+
+.risk-pill {
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.risk-low {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.risk-bar {
+  margin-top: 10px;
+  height: 6px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.risk-bar-fill {
+  width: 35%;
+  height: 100%;
+  background: #22c55e;
+}
+
+/* community meta list */
+.meta-list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.meta-list li + li {
+  margin-top: 4px;
+}
+
+/* market prices */
+.market-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.market-label {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.market-price {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.market-price span {
+  margin-left: 4px;
+}
+
+.market-price.positive {
+  color: #16a34a;
+}
+
+/* last analysis text */
+.last-summary {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin: 8px 0 12px;
+}
+
+.confidence {
+  font-weight: 400;
+  color: #6b7280;
+}
+
+/* responsive */
+@media (max-width: 960px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+

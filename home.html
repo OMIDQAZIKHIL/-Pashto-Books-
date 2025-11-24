@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>dashboard</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+
+<!-- TOP BAR -->
+<div class="topbar">
+    <div class="logo">
+        <i class="fa-solid fa-leaf"></i>
+        SecureCrop
+    </div>
+
+    <div class="right-section">
+        <div class="notification">
+            <i class="fa-regular fa-bell"></i>
+        </div>
+
+        <div class="avatar">F</div>
+
+        <div class="logout-btn">
+           <a href="{% url 'login_page' %}"><i class="fa-solid fa-right-from-bracket"></i></a> 
+        </div>
+    </div>
+</div>
+
+<!-- Dashboard Menu -->
+<div class="welcome-header">
+    <h1>Welcome Back, Farmer! 👋</h1>
+    <p>Your intelligent agricultural assistant - powered by AI</p>
+</div>
+
+<!-- SIDE BAR -->
+<div class="sidebar-card">
+    <div class="menu-title">Dashboard Menu</div>
+
+    <div class="menu-section">
+        <p class="section-label">ANALYSIS</p>
+        <a href="{% url 'input_soil_data' %}">Input Soil Data</a>
+        <a href="#">Crop Recommendation</a>
+    </div>
+
+    <div class="menu-section">
+        <p class="section-label">INTELLIGENCE</p>
+        <a href="{% url 'weather_climate' %}">Weather & Climate</a>
+        <a href="#">Disease Diagnosis</a>
+    </div>
+
+    <div class="menu-section">
+        <p class="section-label">COMMUNITY</p>
+        <a href="#">Community Forum</a>
+        <a href="#">Market Intelligence</a>
+    </div>
+
+    <div class="menu-section">
+        <p class="section-label">SYSTEM</p>
+        <a href="#">Notifications 
+            <span class="notification-badge">3</span>
+        </a>
+        <a href="#">Feedback</a>
+        <a href="#">Settings</a>
+    </div>
+</div>
+
+<!-- Main Dashboard -->
+<div class="dashboard-cards">
+  <!-- Top summary cards -->
+  <div class="summary-cards">
+    <div class="card soil-health">
+      <div class="card-icon">🍃</div>
+      <div class="card-content">
+        <div class="card-title">Soil Health</div>
+        <div class="card-value">92%</div>
+      </div>
+    </div>
+
+    <div class="card weather-score">
+      <div class="card-icon">☁️</div>
+      <div class="card-content">
+        <div class="card-title">Weather Score</div>
+        <div class="card-value">85%</div>
+      </div>
+    </div>
+
+    <div class="card market-demand">
+      <div class="card-icon">📈</div>
+      <div class="card-content">
+        <div class="card-title">Market Demand</div>
+        <div class="card-value high">High</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Alerts -->
+  <div class="alerts">
+    <div class="alert weather-alert">
+      <div class="alert-icon">⚠️</div>
+      <div class="alert-content">
+        <strong>Weather Alert</strong>
+        <p>Heavy rain expected in 2 days. Delay fertilizer application.</p>
+      </div>
+    </div>
+
+    <div class="alert planting-window">
+      <div class="alert-icon">📅</div>
+      <div class="alert-content">
+        <strong>Planting Window Open</strong>
+        <p>Optimal conditions for rice planting in the next 2 weeks!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Current Weather -->
+  <div class="current-weather card">
+    <div class="current-weather-header">
+      <div class="current-weather-icon"> 🌧</div>
+      <div class="current-weather-title">Current Weather</div>
+    </div>
+    <div class="weather-details">
+      <div class="weather-item">
+        <div class="weather-icon">☀️</div>
+        <div class="weather-value">28°C</div>
+        <div class="weather-label">Temperature</div>
+      </div>
+      <div class="weather-item">
+        <div class="weather-icon">💧</div>
+        <div class="weather-value">75%</div>
+        <div class="weather-label">Humidity</div>
+      </div>
+      <div class="weather-item">
+        <div class="weather-icon">☁️</div>
+        <div class="weather-value">60%</div>
+        <div class="weather-label">Rain Chance</div>
+      </div>
+     <a href="{% url 'weather_climate' %}">
+      <button class="forecast-btn">View Forecast</button></a>
+    </div>
+  </div>
+
+</div>
+
+
+
+  <!-- the 6 cards in the center-->
+
+<section class="feature-grid">
+
+  <!-- Soil Analysis -->
+  <article class="feature-card soil-card">
+    <header class="feature-header">
+      <div class="feature-icon">
+        <i class="fa-solid fa-seedling"></i>
+      </div>
+      <div>
+        <h3>Soil Analysis</h3>
+        <p>Get AI-powered crop recommendations</p>
+      </div>
+    </header>
+    <button class="primary-btn">Analyze Soil</button>
+  </article>
+
+  <!-- Disease Diagnosis -->
+  <article class="feature-card disease-card">
+    <header class="feature-header">
+      <div class="feature-icon">
+        <i class="fa-solid fa-virus-covid"></i>
+      </div>
+      <div>
+        <h3>Disease Diagnosis</h3>
+        <p>Upload leaf photos for instant diagnosis</p>
+      </div>
+    </header>
+    <button class="ghost-btn">Scan Crop</button>
+  </article>
+
+  <!-- Weather Intelligence -->
+  <article class="feature-card weather-card">
+    <header class="feature-header">
+      <div class="feature-icon">
+        <i class="fa-regular fa-cloud"></i>
+      </div>
+      <div>
+        <h3>Weather Intelligence</h3>
+        <p>7-day forecast &amp; climate insights</p>
+      </div>
+    </header>
+
+    <div class="climate-row">
+      <span class="climate-label">Climate Risk</span>
+      <span class="risk-pill risk-low">Low</span>
+    </div>
+
+    <div class="risk-bar">
+      <div class="risk-bar-fill"></div>
+    </div>
+  </article>
+
+  <!-- Community Forum -->
+  <article class="feature-card community-card">
+    <header class="feature-header">
+      <div class="feature-icon">
+        <i class="fa-solid fa-user-group"></i>
+      </div>
+      <div>
+        <h3>Community Forum</h3>
+        <p>Connect with fellow farmers</p>
+      </div>
+    </header>
+
+    <ul class="meta-list">
+      <li>✨ 24 new posts this week</li>
+      <li>💬 10 farmers in your area active</li>
+    </ul>
+  </article>
+
+  <!-- Market Prices -->
+  <article class="feature-card market-card">
+    <header class="feature-header">
+      <div class="feature-icon">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </div>
+      <div>
+        <h3>Market Prices</h3>
+        <p>Latest rates &amp; buyer connections</p>
+      </div>
+    </header>
+
+    <div class="market-row">
+      <div>
+        <div class="market-label">Rice</div>
+        <div class="market-price positive">₹2,400 <span>↑</span></div>
+      </div>
+      <div>
+        <div class="market-label">Cotton</div>
+        <div class="market-price positive">₹6,800 <span>↑</span></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Last Analysis -->
+  <article class="feature-card last-card">
+    <header class="feature-header">
+      <div class="feature-icon">
+        <i class="fa-solid fa-leaf"></i>
+      </div>
+      <div>
+        <h3>Last Analysis</h3>
+        <p>Your previous recommendation</p>
+      </div>
+    </header>
+
+    <div class="last-summary">
+      Rice <span class="confidence">(94% confidence)</span>
+    </div>
+
+    <button class="ghost-btn full-width">View Details</button>
+  </article>
+
+</section>
+
+</body>
+</html>

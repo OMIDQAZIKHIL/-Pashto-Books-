@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+  <meta charset="UTF-8">
+  <title>Input Soil Data</title>
+
+  <!-- Font Awesome for icons from your top bar -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/input_soil_data.css' %}">
+
+</head>
+<body>
+
+  <!-- TOP BAR with back button -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="{% url 'home' %}" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back</span>
+      </a>
+
+      <div class="logo">
+        <i class="fa-solid fa-leaf"></i>
+        SecureCrop
+      </div>
+    </div>
+
+    <div class="right-section">
+      <div class="notification">
+        <i class="fa-regular fa-bell"></i>
+      </div>
+
+      <div class="avatar">F</div>
+
+      <div class="logout-btn">
+           <a href="login_page.html"><i class="fa-solid fa-right-from-bracket"></i></a>       </div>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <main class="page-wrapper">
+    <div class="page-inner">
+
+      <!-- Heading -->
+      <section class="page-header">
+        <h1 class="page-title">Input Soil Data</h1>
+        <p class="page-subtitle">
+          Enter your soil parameters for AI-powered crop recommendations
+        </p>
+      </section>
+
+      <!-- Form Card -->
+      <section class="form-card">
+        <header class="card-header">
+          <h2 class="card-title">Soil Parameters</h2>
+          <p class="card-subtitle">
+            Fill in all fields to get accurate crop recommendations
+          </p>
+        </header>
+
+        <form>
+          <div class="form-grid">
+            <!-- Nitrogen -->
+            <div class="form-field">
+              <label for="nitrogen">Nitrogen (N) - mg/kg</label>
+              <input id="nitrogen" type="number" placeholder="e.g., 85">
+            </div>
+
+            <!-- Phosphorus -->
+            <div class="form-field">
+              <label for="phosphorus">Phosphorus (P) - mg/kg</label>
+              <input id="phosphorus" type="number" placeholder="e.g., 65">
+            </div>
+
+            <!-- Potassium -->
+            <div class="form-field">
+              <label for="potassium">Potassium (K) - mg/kg</label>
+              <input id="potassium" type="number" placeholder="e.g., 45">
+            </div>
+
+            <!-- pH -->
+            <div class="form-field">
+              <label for="ph">pH Level</label>
+              <input id="ph" type="number" step="0.1" placeholder="e.g., 6.5">
+            </div>
+
+            <!-- Moisture -->
+            <div class="form-field">
+              <label for="moisture">Moisture (%)</label>
+              <input id="moisture" type="number" placeholder="e.g., 75">
+            </div>
+
+            <!-- Temperature -->
+            <div class="form-field">
+              <label for="temperature">Temperature (°C)</label>
+              <input id="temperature" type="number" step="0.1" placeholder="e.g., 25.5">
+            </div>
+          </div>
+
+          <!-- Tip -->
+          <div class="tip-bar">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Tip: Ensure all measurements are accurate for the best crop recommendations.</span>
+          </div>
+
+          <!-- Buttons -->
+          <div class="card-actions">
+            <button type="submit" class="btn btn-primary">Analyze</button>
+            <button type="reset" class="btn btn-secondary">Reset</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+</body>
+</html>
