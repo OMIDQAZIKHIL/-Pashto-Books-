@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+  <meta charset="UTF-8">
+  <title>Weather & Climate Intelligence</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/weather_climate.css' %}">
+
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="{% url 'home' %}" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back</span>
+      </a>
+
+      <div class="logo">
+        <i class="fa-solid fa-leaf"></i>
+        SecureCrop
+      </div>
+    </div>
+
+    <div class="right-section">
+      <div class="notification">
+        <i class="fa-regular fa-bell"></i>
+      </div>
+      <div class="avatar">F</div>
+      <div class="logout-btn">
+           <a href="login_page.html"><i class="fa-solid fa-right-from-bracket"></i></a>       </div>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <main class="page-wrapper">
+    <div class="page-inner">
+
+      <!-- Heading -->
+      <section class="page-header">
+        <h1 class="page-title">Weather &amp; Climate Intelligence</h1>
+        <p class="page-subtitle">
+          Real-time weather data and AI-powered agricultural insights
+        </p>
+        <p class="location-label">
+          Location: <span id="locationName">Loading…</span>
+        </p>
+      </section>
+
+      <!-- Weather & Alerts -->
+      <section class="alerts-stack">
+        <div class="alert-banner alert-primary">
+          <div class="alert-icon">
+            <i class="fa-solid fa-cloud-showers-heavy"></i>
+          </div>
+          <div>
+            <div class="alert-content-title" id="heavyRainTitle">
+              Weather Status
+            </div>
+            <div id="heavyRainText">
+              Checking current conditions…
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-banner alert-secondary">
+          <div class="alert-icon">
+            <i class="fa-solid fa-seedling"></i>
+          </div>
+          <div>
+            <div class="alert-content-title">Optimal Planting Window</div>
+            <div id="plantingText">
+              Planting advice will be tailored to current temperature and moisture.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Metrics Row -->
+      <section class="metrics-row">
+
+        <!-- Temperature -->
+        <div class="metric-card metric-temp">
+          <div class="metric-header">
+            <span class="metric-label">Temperature</span>
+            <div class="metric-icon">
+              <i class="fa-solid fa-sun"></i>
+            </div>
+          </div>
+          <div class="metric-value" id="tempValue">--°C</div>
+          <div class="metric-caption" id="tempFeelsLike">Feels like --°C</div>
+        </div>
+
+        <!-- Humidity -->
+        <div class="metric-card metric-humid">
+          <div class="metric-header">
+            <span class="metric-label">Humidity</span>
+            <div class="metric-icon">
+              <i class="fa-solid fa-droplet"></i>
+            </div>
+          </div>
+          <div class="metric-value" id="humidityValue">--%</div>
+          <div class="metric-caption" id="humidityCaption">Loading…</div>
+        </div>
+
+        <!-- Wind Speed -->
+        <div class="metric-card metric-wind">
+          <div class="metric-header">
+            <span class="metric-label">Wind Speed</span>
+            <div class="metric-icon">
+              <i class="fa-solid fa-wind"></i>
+            </div>
+          </div>
+          <div class="metric-value" id="windValue">-- km/h</div>
+          <div class="metric-caption" id="windCaption">Loading…</div>
+        </div>
+
+        <!-- Precipitation -->
+        <div class="metric-card metric-rain">
+          <div class="metric-header">
+            <span class="metric-label">Precipitation</span>
+            <div class="metric-icon">
+              <i class="fa-solid fa-cloud-rain"></i>
+            </div>
+          </div>
+          <div class="metric-value" id="precipValue">--%</div>
+          <div class="metric-caption" id="precipCaption">Chance of rain today</div>
+        </div>
+
+      </section>
+
+      <!-- Climate Risk Score -->
+      <section class="risk-card">
+        <div class="risk-header">
+          <div>
+            <div class="risk-title">Climate Risk Score</div>
+            <div class="risk-score">
+              Current planting conditions assessment based on weather patterns
+            </div>
+          </div>
+          <div class="risk-score">
+            Risk Level: <strong id="riskNumeric">-- / 100</strong>
+          </div>
+        </div>
+
+        <div class="risk-pill" id="riskLabel">Loading…</div>
+
+        <div class="risk-bar-track">
+          <div class="risk-bar-fill" id="riskBar"></div>
+        </div>
+
+        <div class="risk-scale">
+          <span class="risk-low">0–30: Ideal</span>
+          <span class="risk-med">31–60: Moderate</span>
+          <span class="risk-high">61–100: Risky</span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    // === CONFIG ===
+    const API_KEY = "0762a2b938e52fa34ae0c704f44b422b";  // <-- replace with your WeatherStack key
+    const CITY = "Kedah";  // Change this to your desired city
+
+    async function fetchWeather() {
+      try {
+        // Fetch current weather
+        const weatherRes = await fetch(
+          `https://api.weatherstack.com/current?access_key=${API_KEY}&query=${encodeURIComponent(CITY)}`
+        );
+        const weather = await weatherRes.json();
+
+        // If the API key is incorrect or the city is not found, an error is returned
+        if (!weather || weather.error) {
+          throw new Error(weather.error.info || "Failed to fetch weather data.");
+        }
+
+        updateUI(weather);
+      } catch (err) {
+        console.error(err);
+        document.getElementById("heavyRainText").textContent =
+          "Unable to load live weather data. Please check your connection or API key.";
+      }
+    }
+
+    function updateUI(weather) {
+      const locationName = document.getElementById("locationName");
+      locationName.textContent = `${weather.location.name}, ${weather.location.country}`;
+
+      // Temperature
+      const temp = Math.round(weather.current.temperature);
+      const feels = Math.round(weather.current.feelslike);
+      document.getElementById("tempValue").textContent = temp + "°C";
+      document.getElementById("tempFeelsLike").textContent = "Feels like " + feels + "°C";
+
+      // Humidity
+      const humidity = weather.current.humidity;
+      document.getElementById("humidityValue").textContent = humidity + "%";
+      document.getElementById("humidityCaption").textContent =
+        humidity >= 70 ? "High moisture level" : humidity >= 40 ? "Moderate moisture" : "Dry air";
+
+      // Wind (convert m/s to km/h)
+      const windKmh = Math.round(weather.current.wind_speed * 3.6);
+      document.getElementById("windValue").textContent = windKmh + " km/h";
+      document.getElementById("windCaption").textContent =
+        windKmh <= 10 ? "Light breeze" : windKmh <= 25 ? "Moderate wind" : "Strong wind";
+
+      // Precipitation
+      const precipPercent = weather.current.precip;
+      document.getElementById("precipValue").textContent = precipPercent + "%";
+    }
+
+    // Start weather data fetch when page loads
+    fetchWeather();
+  </script>
+
+</body>
+</html>
